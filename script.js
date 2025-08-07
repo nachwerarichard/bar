@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://patrinahhotelmgtsys.onrender.com'; // Base URL for API calls
+const API_BASE_URL = 'https://roomcheckbackend-c74g.onrender.com'; // Base URL for API calls
 let authToken = localStorage.getItem('authToken') || ''; // Stores the authentication token
 let currentUsername = localStorage.getItem('username') || ''; // Stores the logged-in username
 let currentUserRole = localStorage.getItem('userRole') || ''; // Stores the logged-in user's role
