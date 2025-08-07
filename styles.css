@@ -1,0 +1,895 @@
+/* --- Global Styles & Body --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e3e3e9; /* Pale Gray - from new palette */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+/* Toggle button styles */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  z-index: 1001;
+}
+#mobile-nav #mobil-nav{
+    color:orange;
+}
+#mobile-nav img
+{
+height:40px;
+width:40px;}
+/* Mobile menu base (hidden by default) */
+#mobile-nav {
+    display:none;
+  position: fixed;
+  top: 0;
+  right: -100%; /* Hide off screen */
+  width: 80%;
+  height: 100vh;
+  background-color: #494949;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+/* Show menu when active */
+#mobile-nav.active {
+  right: 0;
+}
+
+/* Style the mobile nav links */
+#mobile-nav a {
+  color: #fff;
+  padding: 16px;
+  font-size: 20px;
+  text-decoration: none;
+  display: block;
+}
+
+#mobile-nav span {
+  color: #fff;
+  padding: 16px;
+  font-size: 20px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Show the toggle only on small screens */
+@media screen and (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+
+  .header-right {
+    display: none;
+  }
+
+  #mobile-nav {
+    display: flex;
+  }
+}
+
+
+/* Default (desktop) */
+.desktop-nav,
+.desktop-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.mobile-nav-container {
+  display: none; /* Hidden by default */
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .desktop-nav,
+  .desktop-controls {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .mobile-nav-container {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100vh;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+    padding: 20px;
+    display: block;
+  }
+
+  .mobile-nav-container.active {
+    right: 0;
+  }
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .mobile-nav .header-user-controls {
+    margin-top: 2rem;
+  }
+}
+
+/* --- Main Application Container --- */
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 20px;
+    background-color: #f9f9f9; /* Ghost White - from new palette */
+    padding: 0;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+h1, h2, h3 {
+    color: #908ea9; /* Slate Gray - from new palette */
+    border-bottom: 1px solid #c7c7d4; /* Cool Gray - from new palette */
+    padding-bottom: 10px;
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+
+/* --- Header Bar (Top Navigation) --- */
+.app-header {
+    background-color: #494949; /* Slate Gray - from new palette */
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+.header-logo {
+    max-width: 50px; /* Smaller logo for header */
+    height: auto;
+    border-radius: 5px;
+}
+
+.app-header h1 {
+    margin: 0;
+    color: white;
+    font-size: 1.8em;
+    border-bottom: none;
+    padding-bottom: 0;
+    flex-grow: 1; /* Allow title to take space */
+    white-space: nowrap; /* Prevent title from wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add ellipsis if title is too long */
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-grow: 1; /* Allow right section to grow */
+    justify-content: flex-end; /* Push content to the right */
+}
+
+/* Hamburger menu toggle - hidden on desktop */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8em;
+    cursor: pointer;
+}
+
+/* Main Navigation (Horizontal) */
+#main-nav {
+    display: flex;
+    gap: 10px; /* Space between nav buttons */
+    flex-wrap: wrap; /* Allow nav items to wrap */
+}
+
+#main-nav button {
+    padding: 10px 20px;
+    border: none;
+    background-color: transparent;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#main-nav button:hover {
+    background-color: #acaabe; /* Light Gray - from new palette */
+    transform: translateY(-2px);
+}
+
+#main-nav button.active-nav {
+    background-color: #acaabe; /* Light Gray - from new palette */
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.header-user-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.username-display {
+    font-weight: bold;
+    color: white;
+    white-space: nowrap;
+}
+
+#logout-button {
+    background-color: #dc3545; /* Red for logout (kept original for clarity) */
+    padding: 10px 20px;
+    border-radius: 6px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#logout-button:hover {
+    background-color: #c82333;
+}
+
+/* --- Main Content Area --- */
+#main-content {
+    padding: 30px;
+    background-color: #f9f9f9; /* Ghost White - from new palette */
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+/* --- Forms --- */
+form {
+    background-color: #ffffff; /* White */
+    padding: 20px; /* Reduced from 30px */
+    border-radius: 10px;
+    width:200px;
+    margin-bottom: 20px; /* Reduced from 30px */
+    border: 1px solid #e3e3e9; /* Pale Gray */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+form label {
+    display: block;
+    margin-bottom: 6px; /* Reduced from 8px */
+    font-weight: 600;
+    color: #444;
+    font-size: 0.95em;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="date"],
+form input[type="password"],
+form select {
+    width: calc(100% - 24px);
+    padding: 10px; /* Reduced from 12px */
+    margin-bottom: 15px; /* Reduced from 20px */
+    border: 1px solid #c7c7d4; /* Cool Gray */
+    border-radius: 6px;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input[type="text"]:focus,
+form input[type="number"]:focus,
+form input[type="date"]:focus,
+form input[type="password"]:focus,
+form select:focus {
+    border-color: #908ea9; /* Slate Gray */
+    outline: none;
+    box-shadow: 0 0 8px rgba(144, 142, 169, 0.2); /* Shadow with palette color */
+}
+
+form button {
+    width: auto;
+    background-color: gray; /* Green (kept original for action buttons) */
+    color: white;
+    cursor: pointer;
+    font-size: 1em; /* Slightly reduced from 1.05em */
+    padding: 10px 20px; /* Reduced from 12px 25px */
+    border: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+form button:hover {
+    background-color: gray;
+    transform: translateY(-2px);
+}
+
+/* --- Tables --- */
+.table-responsive {
+    overflow-x: auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff; /* White */
+    min-width: 700px;
+}
+
+th, td {
+    border: 1px solid #e3e3e9; /* Pale Gray */
+    padding: 15px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+th {
+    background-color: #908ea9; /* Slate Gray - from new palette */
+    color: white;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Ghost White */
+}
+
+tr:hover {
+    background-color: #f0f2f5; /* Slightly darker than body for hover */
+}
+
+.actions button {
+    padding: 8px 15px;
+    margin-right: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.actions .edit {
+    background-color: #ffc107; /* Warning yellow */
+}
+.actions .edit:hover {
+    background-color: #e0a800;
+    transform: translateY(-1px);
+}
+.actions .delete {
+    background-color: #dc3545; /* Danger red */
+}
+.actions .delete:hover {
+    background-color: #c82333;
+    transform: translateY(-1px);
+}
+
+/* --- Login Section --- */
+#login-section {
+    text-align: center;
+    margin-top: 100px;
+    padding: 30px; /* Reduced from 40px */
+    background-color: #f9f9f9; /* Kept from original for login */
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.18);
+    max-width: 450px;
+    width: 90%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-logo {
+    max-width: 120px; /* Size for login logo */
+    height: auto;
+    margin-bottom: 20px; /* Reduced from 25px */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+#login-section h2 {
+    color: #007bff; /* Kept original for login */
+    margin-bottom: 20px; /* Reduced from 25px */
+    border-bottom: none;
+    padding-bottom: 0;
+    font-size: 1.8em; /* Slightly reduced from 2em */
+}
+
+#login-section input {
+    width: calc(100% - 30px);
+    padding: 12px; /* Reduced from 15px */
+    margin-bottom: 15px; /* Reduced from 20px */
+    border: 1px solid #ccc; /* Kept original for login */
+    border-radius: 8px;
+    font-size: 1em; /* Reduced from 1.1em */
+    box-sizing: border-box;
+}
+
+#login-section input:focus {
+    border-color: #007bff; /* Kept original for login */
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.25);
+}
+
+#login-section button {
+    padding: 12px 30px; /* Reduced from 15px 40px */
+    background-color: #007bff; /* Kept original for login */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em; /* Reduced from 1.2em */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#login-section button:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+}
+
+#login-message {
+    color: #dc3545;
+    margin-top: 15px; /* Reduced from 20px */
+    font-weight: bold;
+    font-size: 1em; /* Reduced from 1.1em */
+}
+
+/* --- Filter Controls --- */
+.filter-controls {
+    margin-bottom: 20px; /* Reduced from 25px */
+    padding: 15px; /* Reduced from 20px */
+    background-color: #e3e3e9; /* Pale Gray - from new palette */
+    border: 1px solid #c7c7d4; /* Cool Gray - from new palette */
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Reduced from 15px */
+    align-items: center;
+    box-shadow: inset 0 1px 5px rgba(0,0,0,0.03);
+}
+
+.filter-controls label {
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 0;
+}
+
+.filter-controls input[type="text"],
+.filter-controls input[type="number"],
+.filter-controls input[type="date"] {
+    width: 100%; /* Make them take up full available width within their container */
+    max-width: 180px; /* Set a maximum width to prevent them from becoming too wide */
+    min-width: 80px; /* Ensure a minimum width for usability */
+    padding: 6px 10px; /* Slightly reduced vertical padding, standard horizontal */
+    border: 1px solid #ccc; /* A subtle border for definition */
+    border-radius: 4px; /* Slightly smaller border-radius for a more compact look */
+    font-size: 0.875em; /* A common and readable font size */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* If your filter controls are in a flex container, you might also want to adjust that */
+.filter-controls {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens */
+    gap: 10px; /* Add some space between filter controls */
+    align-items: center; /* Vertically align items */
+}
+
+.filter-controls button {
+    margin-bottom: 0;
+    padding: 8px 18px; /* Reduced from 10px 20px */
+    font-size: 0.95em; /* Slightly reduced from 1em */
+    background-color: #acaabe; /* Light Gray - from new palette for filter buttons */
+    color: #2c3e50; /* Dark text for light button */
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.filter-controls button:hover {
+    background-color: #908ea9; /* Slate Gray - darker on hover */
+    color: white;
+}
+
+/* --- Pagination Controls --- */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px; /* Reduced from 20px */
+    gap: 8px; /* Reduced from 10px */
+    padding: 8px; /* Reduced from 10px */
+    background-color: #e3e3e9; /* Pale Gray */
+    border-radius: 8px;
+    border: 1px solid #c7c7d4; /* Cool Gray */
+}
+
+.pagination-controls button {
+    background-color: #908ea9; /* Slate Gray */
+    color: white;
+    border: none;
+    padding: 6px 12px; /* Reduced from 8px 15px */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pagination-controls button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.pagination-controls button:hover:not(:disabled) {
+    background-color: #7a7891; /* Darker slate gray */
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+        border-radius: 8px;
+    }
+
+    .app-header {
+        flex-direction: column; /* Stack header items */
+        align-items: flex-start; /* Align header items to the left */
+        padding: 15px 20px;
+        border-radius: 8px 8px 0 0;
+        position: relative; /* For positioning menu-toggle */
+    }
+
+    .header-left {
+        width: 100%; /* Full width for logo and title */
+        justify-content: space-between; /* Space out logo and title */
+    }
+
+    .app-header h1 {
+        font-size: 1.5em;
+        text-align: left;
+        flex-grow: 1; /* Allow title to take space */
+        margin-left: 15px; /* Space from logo */
+    }
+
+    .header-right {
+        flex-direction: column; /* Stack nav and user controls */
+        align-items: flex-start; /* Align to the left */
+        width: 100%;
+        gap: 0; /* Remove gap when stacked */
+        max-height: 0; /* Initially hidden */
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+    }
+
+    .header-right.active {
+        max-height: 500px; /* Max height to reveal content */
+        margin-top: 15px; /* Space from header-left */
+    }
+
+    .menu-toggle {
+        display: block; /* Show hamburger menu */
+        position: absolute; /* Position independently */
+        top: 20px;
+        right: 20px;
+        z-index: 1001; /* Ensure it's on top */
+    }
+
+    #main-nav {
+        flex-direction: column; /* Stack nav buttons vertically */
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    #main-nav button {
+        width: 100%; /* Full width buttons */
+        padding: 12px 20px;
+        border-radius: 0; /* No border radius for stacked buttons */
+    }
+    #main-nav button:hover,
+    #main-nav button.active-nav {
+        background-color: #7a7891; /* Darker hover for mobile nav */
+    }
+
+    .header-user-controls {
+        flex-direction: column; /* Stack user controls */
+        width: 100%;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .username-display {
+        margin-bottom: 5px;
+    }
+
+    #logout-button {
+        width: 100%;
+        text-align: left;
+        justify-content: flex-start; /* Align icon and text to start */
+        padding: 12px 20px;
+        border-radius: 0;
+    }
+
+    #main-content {
+        padding: 20px;
+    }
+
+    #login-section {
+        margin-top: 50px;
+        padding: 25px; /* Further reduced for mobile */
+    }
+
+    #login-section input {
+        padding: 10px; /* Further reduced for mobile */
+    }
+
+    #login-section button {
+        padding: 10px 25px; /* Further reduced for mobile */
+        font-size: 1em;
+    }
+
+    .filter-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .filter-controls input,
+    .filter-controls button {
+        width: 100%;
+        min-width: unset;
+        padding: 8px; /* Ensure consistency for mobile */
+        font-size: 0.9em; /* Ensure consistency for mobile */
+    }
+
+    table {
+        min-width: 500px; /* Adjust minimum table width for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .app-header h1 {
+        font-size: 1.3em;
+        margin-left: 10px;
+    }
+
+    .header-logo {
+        max-width: 40px;
+    }
+
+    #logout-button {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    form {
+        padding: 15px; /* Further reduced for very small screens */
+    }
+
+    form label {
+        font-size: 0.9em; /* Slightly smaller font */
+    }
+
+    form input[type="text"],
+    form input[type="number"],
+    form input[type="date"],
+    form input[type="password"],
+    form select {
+        padding: 8px; /* Further reduced for very small screens */
+        font-size: 0.9em;
+        margin-bottom: 10px; /* Reduced margin */
+    }
+
+    form button {
+        padding: 8px 15px; /* Further reduced */
+        font-size: 0.95em;
+    }
+
+    th, td {
+        padding: 8px; /* Reduced from 10px */
+        font-size: 0.85em; /* Slightly smaller font */
+    }
+
+    .actions button {
+        padding: 5px 8px; /* Further reduced */
+        font-size: 11px;
+        margin-right: 3px;
+    }
+
+    #login-section {
+        padding: 20px; /* Further reduced for very small screens */
+    }
+
+    #login-section h2 {
+        font-size: 1.5em;
+    }
+
+    #login-section input {
+        padding: 10px;
+        font-size: 0.95em;
+    }
+
+    #login-section button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+
+    .filter-controls {
+        padding: 10px;
+        gap: 5px;
+    }
+
+    .filter-controls input,
+    .filter-controls button {
+        padding: 6px;
+        font-size: 0.85em;
+    }
+
+    .pagination-controls {
+        padding: 5px;
+        gap: 5px;
+    }
+
+    .pagination-controls button {
+        padding: 4px 10px;
+        font-size: 0.8em;
+    }
+}
+
+
+    
+
+ @media (max-width: 240px) {
+    .app-header h1 {
+        font-size: 1em; /* Further reduced */
+        margin-left: 2px; /* Further reduced */
+    }
+
+    .header-logo {
+        max-width: 30px; /* Further reduced */
+    }
+
+    #logout-button {
+        padding: 4px 8px; /* Further reduced */
+        font-size: 10px; /* Further reduced */
+    }
+
+    form {
+        padding: 10px; /* Significantly reduced */
+    }
+
+    form label {
+        font-size: 0.8em; /* Further reduced */
+    }
+
+    form input[type="text"],
+    form input[type="number"],
+    form input[type="date"],
+    form input[type="password"],
+    form select {
+        padding: 6px; /* Significantly reduced */
+        font-size: 0.8em; /* Further reduced */
+        margin-bottom: 8px; /* Further reduced */
+    }
+
+    form button {
+        padding: 6px 10px; /* Significantly reduced */
+        font-size: 0.85em; /* Further reduced */
+    }
+
+    th, td {
+        padding: 5px; /* Significantly reduced */
+        font-size: 0.75em; /* Further reduced */
+    }
+
+    .actions button {
+        padding: 3px 6px; /* Significantly reduced */
+        font-size: 10px; /* Further reduced */
+        margin-right: 2px; /* Further reduced */
+    }
+
+    #login-section {
+        padding: 15px; /* Further reduced */
+    }
+
+    #login-section h2 {
+        font-size: 1.2em; /* Further reduced */
+    }
+
+    #login-section input {
+        padding: 8px; /* Further reduced */
+        font-size: 0.85em; /* Further reduced */
+    }
+
+    #login-section button {
+        padding: 8px 15px; /* Further reduced */
+        font-size: 0.9em; /* Further reduced */
+    }
+
+    .filter-controls {
+        padding: 5px; /* Significantly reduced */
+        gap: 3px; /* Further reduced */
+    }
+
+    .filter-controls input,
+    .filter-controls button {
+        padding: 4px; /* Significantly reduced */
+        font-size: 0.75em; /* Further reduced */
+    }
+
+    .pagination-controls {
+        padding: 3px; /* Significantly reduced */
+        gap: 3px; /* Further reduced */
+    }
+
+    .pagination-controls button {
+        padding: 3px 8px; /* Significantly reduced */
+        font-size: 0.7em; /* Further reduced */
+    }
+}
